@@ -3,56 +3,69 @@ import { checkValidData } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/redux/userSlice";
 const Form = () => {
   const [signUp, setSignUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const email = useRef(null);
   const password = useRef(null);
+  const fullName = useRef(null);
 
   const handleButtonClick = () => {
     const emailValue = email.current.value;
     const passwordValue = password.current.value;
+    const fullNameValue = fullName.current ? fullName.current.value : null;
 
-    const errorMessage = checkValidData(emailValue, passwordValue);
+    const validationErrorMessage = checkValidData(emailValue, passwordValue);
 
-    setErrorMessage(errorMessage);
+    setErrorMessage(validationErrorMessage);
 
-    if (errorMessage === null) {
-      //SignUp
+    if (!validationErrorMessage) {
       if (signUp) {
+        if (!fullNameValue) {
+          setErrorMessage("Full name is required for sign-up.");
+          return;
+        }
         createUserWithEmailAndPassword(auth, emailValue, passwordValue)
           .then((userCredential) => {
-            // Signed up
             const user = userCredential.user;
-            console.log(user);
-            // ...
+            updateProfile(user, {
+              displayName: fullNameValue,
+              photoURL: "https://redux-toolkit.js.org/img/redux.svg",
+            }).then(() => {
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              navigate("/browse");
+            });
           })
           .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            setErrorMessage(errorCode + "-" + errorMessage);
-            // ..
+            setErrorMessage(error.code + "-" + error.message);
           });
       } else {
-        //Sign-InLogic
         signInWithEmailAndPassword(auth, emailValue, passwordValue)
           .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-            console.log(user);
-            // ...
+            console.log(userCredential);
+            navigate("/browse");
           })
           .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            setErrorMessage(errorCode + "-" + errorMessage);
+            setErrorMessage(error.code + "-" + error.message);
           });
       }
-    } else {
-      return null;
     }
   };
 
@@ -73,6 +86,7 @@ const Form = () => {
         >
           {signUp && (
             <input
+              ref={fullName}
               className="p-4 w-full bg-gray-700  border border-gray-50 rounded-lg "
               type="text"
               placeholder="Full Name"

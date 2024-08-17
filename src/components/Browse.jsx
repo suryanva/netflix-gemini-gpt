@@ -1,7 +1,8 @@
+import AuthenticatedHeader from "./AuthenticatedHeader";
 const Browse = () => {
   return (
     <div>
-      <h1>Browse</h1>
+      <AuthenticatedHeader />
     </div>
   );
 };

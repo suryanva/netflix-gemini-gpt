@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="w-full bg-gradient-to-t from-black/100 to-black/90 py-10 text-white">
+    <footer className="w-full h-full bg-gradient-to-t from-black/100 to-black/90 py-10 text-white">
       <div className="container mx-auto flex flex-col items-start  space-y-4 px-4">
         <p>Questions? Call 000-800-919-1694</p>
         <ul className="flex flex-wrap justify-center space-x-6">
