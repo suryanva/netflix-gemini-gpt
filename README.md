@@ -14,6 +14,9 @@
 - Implemented SignIn User API
 - Created Redux Store with userSlice
 - Implemented the Sign-Out Feature
+- BugFix: Signup user displayname and profile picture update
+- BugFix: if the user is not logged in Redirect / Browse to Login Page and vice-versa
+- Unsubscribed to the OnAuthStateChange callback
 
 # Features
 

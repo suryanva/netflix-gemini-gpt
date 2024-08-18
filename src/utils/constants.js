@@ -3,3 +3,5 @@ export const NETFLIX_LOGO_URL =
 
 export const NETFLIX_BACKGROUND_URL =
   "https://wpassets.brainstation.io/app/uploads/2017/04/13100509/Netflix-Background.jpg";
+
+export const USER_URL = "https://redux-toolkit.js.org/img/redux.svg";

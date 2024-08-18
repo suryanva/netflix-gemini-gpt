@@ -8,6 +8,7 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/redux/userSlice";
+import { USER_URL } from "../utils/constants";
 const Form = () => {
   const [signUp, setSignUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -37,7 +38,7 @@ const Form = () => {
             const user = userCredential.user;
             updateProfile(user, {
               displayName: fullNameValue,
-              photoURL: "https://redux-toolkit.js.org/img/redux.svg",
+              photoURL: USER_URL,
             }).then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(
