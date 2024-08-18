@@ -1,0 +1,24 @@
+import PropTypes from "prop-types";
+import MovieCard from "./MovieCard";
+
+const MovieList = ({ title, movies }) => {
+  return (
+    <div className="px-6 py-2 ">
+      <h1 className="text-3xl py-6 text-white">{title}</h1>
+      <div className="flex overflow-x-scroll">
+        <div className="flex">
+          {movies?.map((movie) => (
+            <MovieCard key={movie.id} posterPath={movie.poster_path} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+MovieList.propTypes = {
+  title: PropTypes.string.isRequired,
+  movies: PropTypes.array.isRequired,
+};
+
+export default MovieList;
