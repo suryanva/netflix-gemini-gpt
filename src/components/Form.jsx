@@ -71,7 +71,7 @@ const Form = () => {
 
   return (
     <div className="w-full bg-opacity-65 bg-black h-[800px] relative">
-      <div className="w-[24.5%] h-[85%] bg-black bg-opacity-50   p-16 space-y-4 top-0 bottom-0 left-0 right-0 mx-auto  text-white rounded-md absolute z-10 ">
+      <div className="w-[24.5%] h-[85%] bg-black bg-opacity-50   p-16 space-y-4 top-22 bottom-6 left-0 right-0 mx-auto  text-white rounded-md absolute z-10 ">
         <h1 className="font-bold text-3xl mt-2">
           {signUp ? "Sign Up" : "Sign In"}
         </h1>

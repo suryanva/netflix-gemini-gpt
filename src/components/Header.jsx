@@ -45,7 +45,7 @@ const Header = () => {
   }, []);
   return (
     <div>
-      <div className="flex justify-around items-center bg-opacity-65 bg-black h-24">
+      <div className="flex justify-around items-center bg-gradient-to-b from-black h-24 absolute z-10 w-full">
         <img
           className="p-2 m-2 w-52 h-full  "
           src={NETFLIX_LOGO_URL}
