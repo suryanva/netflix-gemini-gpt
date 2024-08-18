@@ -17,7 +17,13 @@
 - BugFix: Signup user displayname and profile picture update
 - BugFix: if the user is not logged in Redirect / Browse to Login Page and vice-versa
 - Unsubscribed to the OnAuthStateChange callback
-- Register TMDB API & CREATE AN APP AND GET ACCESS TOKEN
+- Register TMDB API & create an app and get the access token
+- Get Data from TMBD now playing movies list API
+- Custom Hook for Now Palying Movies
+- Create MovieSlice
+- Planning for MainContainer and Secondary Container
+- Fetch Data for Trailer Video
+- Embed the Youtube Video and make it autoplay and mute
 
 # Features
 
