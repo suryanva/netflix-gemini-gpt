@@ -5,3 +5,14 @@ export const NETFLIX_BACKGROUND_URL =
   "https://wpassets.brainstation.io/app/uploads/2017/04/13100509/Netflix-Background.jpg";
 
 export const USER_URL = "https://redux-toolkit.js.org/img/redux.svg";
+
+export const API_OPTIONS = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization: `Bearer ${import.meta.env.VITE_TMDB_READ_ACCESS_TOKEN}`,
+  },
+};
+
+export const TMDB_NOW_PLAYING =
+  "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
