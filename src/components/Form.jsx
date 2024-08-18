@@ -6,13 +6,11 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/redux/userSlice";
 const Form = () => {
   const [signUp, setSignUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const email = useRef(null);
@@ -50,7 +48,6 @@ const Form = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             });
           })
           .catch((error) => {
@@ -58,10 +55,7 @@ const Form = () => {
           });
       } else {
         signInWithEmailAndPassword(auth, emailValue, passwordValue)
-          .then((userCredential) => {
-            console.log(userCredential);
-            navigate("/browse");
-          })
+          .then(() => {})
           .catch((error) => {
             setErrorMessage(error.code + "-" + error.message);
           });
