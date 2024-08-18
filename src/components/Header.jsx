@@ -44,27 +44,25 @@ const Header = () => {
     return () => unSubscribe();
   }, []);
   return (
-    <div>
-      <div className="flex justify-around items-center bg-gradient-to-b from-black h-24 absolute z-10 w-full">
-        <img
-          className="p-2 m-2 w-52 h-full  "
-          src={NETFLIX_LOGO_URL}
-          alt="logo"
-        />
-        {user ? (
-          <div className="flex">
-            <img src={user?.photoURL} alt="useralt" className="w-12" />
-            <button
-              onClick={handleSignOut}
-              className=" font-bold  text-white border border-black p-3 hover:bg-red-600"
-            >
-              Sign-Out
-            </button>
-          </div>
-        ) : (
-          <div></div>
-        )}
-      </div>
+    <div className="flex justify-around items-center bg-gradient-to-b from-black h-24 absolute z-10 w-full">
+      <img
+        className="p-2 m-2 w-52 h-full  "
+        src={NETFLIX_LOGO_URL}
+        alt="logo"
+      />
+      {user ? (
+        <div className="flex">
+          <img src={user?.photoURL} alt="useralt" className="w-12" />
+          <button
+            onClick={handleSignOut}
+            className=" font-bold  text-white border border-black p-3 hover:bg-red-600"
+          >
+            Sign-Out
+          </button>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };
