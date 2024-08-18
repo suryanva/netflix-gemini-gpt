@@ -24,6 +24,11 @@
 - Planning for MainContainer and Secondary Container
 - Fetch Data for Trailer Video
 - Embed the Youtube Video and make it autoplay and mute
+- Build Secondary Component
+- Build Movie List
+- Build Movie Card
+- TMDB Image CDN URL
+- Custom Hooks
 
 # Features
 
