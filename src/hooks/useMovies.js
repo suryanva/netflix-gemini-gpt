@@ -14,7 +14,7 @@ import {
   addUpcomingMovies,
 } from "../utils/redux/moviesSlice";
 
-const useNowPlayingMovies = () => {
+const useMovies = () => {
   const dispatch = useDispatch();
 
   const fetchMovies = async (url, action) => {
@@ -38,4 +38,4 @@ const useNowPlayingMovies = () => {
   // return { loading, error };
 };
 
-export default useNowPlayingMovies;
+export default useMovies;
