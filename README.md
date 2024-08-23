@@ -1,4 +1,3 @@
-````markdown
 # Netflix GPT
 
 ## Description
@@ -35,7 +34,6 @@ A movie browsing and recommendation application that integrates with TMDB and Ge
    git clone https://github.com/suryanva/netflix-gemini-gpt.git
    cd netflix-gemini-gpt
    ```
-````
 
 2. **Install dependencies**
 
