@@ -27,3 +27,5 @@ export const TMDB_TOP_RATED =
 
 export const TMDB_UPCOMING =
   "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
+
+export const TMDB_SEARCH = "https://api.themoviedb.org/3/search/movie?";
