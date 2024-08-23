@@ -6,7 +6,7 @@ import {
   TMDB_UPCOMING,
   TMDB_TOP_RATED,
 } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addNowPlayingMovies,
   addPopularMovies,
@@ -27,15 +27,28 @@ const useMovies = () => {
     }
   };
 
-  useEffect(() => {
-    fetchMovies(TMDB_NOW_PLAYING, addNowPlayingMovies);
-    fetchMovies(TMDB_POPULAR, addPopularMovies);
-    fetchMovies(TMDB_TOP_RATED, addTopRatedMovies);
-    fetchMovies(TMDB_UPCOMING, addUpcomingMovies);
-  }, []);
+  // Select movies data from the Redux store
+  const nowPlayingMovies = useSelector(
+    (store) => store.movies.nowPlayingMovies
+  );
+  const popularMovies = useSelector((store) => store.movies.nowPopularMovies);
+  const topRatedMovies = useSelector((store) => store.movies.nowTopRatedMovies);
+  const upcomingMovies = useSelector((store) => store.movies.nowUpcomingMovies);
 
-  // Optionally return something if needed
-  // return { loading, error };
+  useEffect(() => {
+    if (nowPlayingMovies == null) {
+      fetchMovies(TMDB_NOW_PLAYING, addNowPlayingMovies);
+    }
+    if (popularMovies == null) {
+      fetchMovies(TMDB_POPULAR, addPopularMovies);
+    }
+    if (topRatedMovies == null) {
+      fetchMovies(TMDB_TOP_RATED, addTopRatedMovies);
+    }
+    if (upcomingMovies == null) {
+      fetchMovies(TMDB_UPCOMING, addUpcomingMovies);
+    }
+  }, []);
 };
 
 export default useMovies;
