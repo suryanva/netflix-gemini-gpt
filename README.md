@@ -37,6 +37,7 @@
 - created gptSlice added data
 - Resused Movie Card component to make movie suggestion List
 - Memoization in Redux Store for optimimum performance and reduce api number of api calls.
+- Made LoginPage and GPTSearch Mobile Responsive
 
 # Features
 
