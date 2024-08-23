@@ -29,6 +29,8 @@
 - Build Movie Card
 - TMDB Image CDN URL
 - Custom Hooks
+- GPT Search Page
+- GPT Search Bar
 
 # Features
 
