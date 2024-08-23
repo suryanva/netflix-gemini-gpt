@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../utils/redux/userSlice";
+import { toggleGptSearchView } from "../utils/redux/gptSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -14,8 +15,7 @@ const Header = () => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {})
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         navigate("/error");
       });
   };
@@ -43,6 +43,10 @@ const Header = () => {
     // Unsubscribe when component unmounts
     return () => unSubscribe();
   }, []);
+
+  const handleGptSearch = () => {
+    dispatch(toggleGptSearchView());
+  };
   return (
     <div className="flex justify-around items-center bg-gradient-to-b from-black h-24 absolute z-10 w-full">
       <img
@@ -52,10 +56,16 @@ const Header = () => {
       />
       {user ? (
         <div className="flex">
+          <button
+            onClick={handleGptSearch}
+            className="py-2 px-4 m-4 bg-purple-800 text-white rounded"
+          >
+            GPT SEARCH
+          </button>
           <img src={user?.photoURL} alt="useralt" className="w-12" />
           <button
             onClick={handleSignOut}
-            className=" font-bold  text-white border border-black p-3 hover:bg-red-600"
+            className=" font-bold py-2 px-4 m-4 text-white border border-black p-3 hover:bg-red-600"
           >
             Sign-Out
           </button>

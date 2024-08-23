@@ -5,7 +5,7 @@ const VideoTitle = (props) => {
   return (
     <div className="w-screen aspect-video pt-[25%] px-24 absolute text-white bg-gradient-to-r from-black">
       <h1 className="text-6xl font-bold">{title}</h1>
-      <p className="py-6 text-lg w-1/3">{overview}</p>
+      <p className="py-6 text-lg w-1/3">{overview.slice(0, 150)}</p>
       <div className="space-x-4">
         <button className="bg-white text-black px-12 text-xl  py-4  rounded-lg hover:bg-opacity-80">
           ▶️ Play
