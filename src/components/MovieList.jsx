@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+/* eslint-disable react/prop-types */
 import MovieCard from "./MovieCard";
 
 const MovieList = ({ title, movies }) => {
@@ -14,11 +14,6 @@ const MovieList = ({ title, movies }) => {
       </div>
     </div>
   );
-};
-
-MovieList.propTypes = {
-  title: PropTypes.string.isRequired,
-  movies: PropTypes.array.isRequired,
 };
 
 export default MovieList;

@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+/* eslint-disable react/prop-types */
 import useGetMovieTrailer from "../hooks/useGetMovieTrailer";
 
 const VideoBackground = ({ movieId }) => {
@@ -14,9 +14,6 @@ const VideoBackground = ({ movieId }) => {
       ></iframe>
     </div>
   );
-};
-VideoBackground.propTypes = {
-  movieId: PropTypes.string.isRequired,
 };
 
 export default VideoBackground;

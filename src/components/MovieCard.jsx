@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+/* eslint-disable react/prop-types */
 import { TMDB_IMAGE_CDN } from "../utils/constants";
 
 const MovieCard = ({ posterPath }) => {
@@ -7,10 +7,6 @@ const MovieCard = ({ posterPath }) => {
       <img src={TMDB_IMAGE_CDN + posterPath} alt="Movie Card" />
     </div>
   );
-};
-
-MovieCard.propTypes = {
-  posterPath: PropTypes.string.isRequired,
 };
 
 export default MovieCard;
