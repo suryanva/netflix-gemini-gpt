@@ -10,7 +10,7 @@ const GptMovieSuggestions = () => {
 
   return (
     <div className="w-1/2 mx-auto bg-black bg-opacity-90 rounded-b-lg">
-      <div className="w-full flex flex-wrap pb-4">
+      <div className=" flex flex-wrap pb-4 justify-center items-center">
         {gptMovieResult
           .filter((movie) => movie && movie.id) // Filter out undefined or invalid movie objects
           .map((movie) => (

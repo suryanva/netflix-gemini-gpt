@@ -71,37 +71,37 @@ const Form = () => {
 
   return (
     <div className="w-full bg-opacity-65 bg-black h-[800px] relative">
-      <div className="w-[24.5%] h-[85%] bg-black bg-opacity-50   p-16 space-y-4 top-22 bottom-6 left-0 right-0 mx-auto  text-white rounded-md absolute z-10 ">
-        <h1 className="font-bold text-3xl mt-2">
+      <div className="w-full max-w-lg h-auto bg-black bg-opacity-50 p-8 md:p-16 space-y-4 top-22 bottom-6 left-0 right-0 mx-auto text-white rounded-md absolute z-10">
+        <h1 className="font-bold text-2xl md:text-3xl mt-2 text-center">
           {signUp ? "Sign Up" : "Sign In"}
         </h1>
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="space-y-6 text-center "
+          className="space-y-6 text-center"
         >
           {signUp && (
             <input
               ref={fullName}
-              className="p-4 w-full bg-gray-700  border border-gray-50 rounded-lg "
+              className="p-4 w-full bg-gray-700 border border-gray-50 rounded-lg"
               type="text"
               placeholder="Full Name"
             />
           )}
           <input
             ref={email}
-            className="p-4 w-full bg-gray-700  border border-gray-50 rounded-lg "
+            className="p-4 w-full bg-gray-700 border border-gray-50 rounded-lg"
             type="text"
             placeholder="Email"
           />
           <input
             ref={password}
-            className="p-4 w-full bg-gray-700  border border-gray-50 rounded-lg"
+            className="p-4 w-full bg-gray-700 border border-gray-50 rounded-lg"
             type="password"
             placeholder="Password"
           />
           <button
             onClick={() => handleButtonClick()}
-            className="block w-full p-2 bg-[#E50914]  hover:bg-opacity-60 "
+            className="block w-full p-2 bg-[#E50914] hover:bg-opacity-60 rounded-lg"
           >
             {signUp ? "Sign Up" : "Sign In"}
           </button>
@@ -109,15 +109,13 @@ const Form = () => {
           {!signUp && <h3 className="text-center">OR</h3>}
 
           {!signUp && (
-            <button
-              className={"block w-full p-2 bg-gray-600 hover:bg-opacity-60"}
-            >
+            <button className="block w-full p-2 bg-gray-600 hover:bg-opacity-60 rounded-lg">
               Use a Sign-In Code
             </button>
           )}
 
           {!signUp && (
-            <p className="text-center hover:underline ">
+            <p className="text-center hover:underline">
               <a href="#dummy">Forgot Password?</a>
             </p>
           )}
@@ -127,14 +125,14 @@ const Form = () => {
           <label htmlFor="rememberMe">Remember Me</label>
         </div>
         <p
-          className="cursor-pointer hover:underline"
+          className="cursor-pointer hover:underline text-center"
           onClick={() => toggleSignUp()}
         >
           {signUp
             ? "Already a User? Sign In Now"
             : "New to Netflix? Sign up now."}
         </p>
-        <p>
+        <p className="text-center">
           This page is protected by Google reCAPTCHA to ensure you are not a
           bot. Learn more.
         </p>

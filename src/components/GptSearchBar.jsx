@@ -24,7 +24,7 @@ const GptSearchBar = () => {
     const searchValue = searchText.current.value;
 
     // Construct the prompt to get 5 results
-    const prompt = `List 5 ${searchValue} only, nothing more, nothing less.`;
+    const prompt = `List 6 ${searchValue} only, nothing more, nothing less.`;
 
     setIsLoading(true); // Set loading state to true before starting the async operation
 
@@ -71,21 +71,21 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="pt-[10%] flex-col justify-center">
+    <div className=" pt-[10%] flex-col justify-center">
       <form
-        className="w-1/2 mx-auto bg-black grid grid-cols-12"
+        className="lg:mt-0 mt-[70%] w-11/12 md:w-1/2 mx-auto bg-black grid grid-cols-12"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={searchText}
           type="text"
-          className="p-4 m-4 col-span-9 text-black"
+          className="p-2 md:p-4 m-2 md:m-4 col-span-8 md:col-span-9 text-black"
           placeholder="Search for a movie"
         />
         <button
-          className="col-span-3 py-2 px-4 m-4 bg-red-700 text-white rounded-lg"
+          className="col-span-4 md:col-span-3 py-2 px-2 md:px-4 m-2 md:m-4 bg-red-700 text-white rounded-lg"
           onClick={handleGptSearchClick}
-          disabled={isLoading} // Disable button while loading
+          disabled={isLoading}
         >
           Search
         </button>
