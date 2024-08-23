@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import MovieCard from "./MovieCard"; // Adjust the import path as needed
+import MovieCard from "./MovieCard";
 
 const GptMovieSuggestions = () => {
   const gptMovieResult = useSelector((state) => state.gpt.gptMovieResult);
@@ -9,8 +9,8 @@ const GptMovieSuggestions = () => {
   }
 
   return (
-    <div className="w-1/2 mx-auto bg-black bg-opacity-90">
-      <div className="flex justify-center items-center mx-auto p-6 flex-wrap">
+    <div className="w-1/2 mx-auto bg-black bg-opacity-90 rounded-b-lg">
+      <div className="w-full flex flex-wrap pb-4">
         {gptMovieResult
           .filter((movie) => movie && movie.id) // Filter out undefined or invalid movie objects
           .map((movie) => (
