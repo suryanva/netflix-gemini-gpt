@@ -1,12 +1,16 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import model from "../utils/gemini";
 import { API_OPTIONS, TMDB_SEARCH } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addGptMovieResult } from "../utils/redux/gptSlice";
+import Shimmer from "./Shimmer";
+import GptMovieSuggestions from "./GptMovieSuggestions";
 
 const GptSearchBar = () => {
   const searchText = useRef(null);
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false); // State to manage loading
+
   const searchMovieTMDB = async (movieName) => {
     const data = await fetch(
       `${TMDB_SEARCH}query=${movieName}&include_adult=false&language=en-US&page=1`,
@@ -15,11 +19,14 @@ const GptSearchBar = () => {
     const json = await data.json();
     return json.results[0];
   };
+
   const handleGptSearchClick = async () => {
     const searchValue = searchText.current.value;
 
     // Construct the prompt to get 5 results
     const prompt = `List 5 ${searchValue} only, nothing more, nothing less.`;
+
+    setIsLoading(true); // Set loading state to true before starting the async operation
 
     try {
       // Generate content using the model
@@ -48,23 +55,25 @@ const GptSearchBar = () => {
         .map((movie) => movie.trim());
 
       console.log(moviesArrayFromString); // This will log the array of movie names
+
+      // Fetch movie data from TMDB
       const promiseArray = moviesArrayFromString.map((movie) =>
         searchMovieTMDB(movie)
       );
-
-      //[Promise,Promise,Promise..]
 
       const movieData = await Promise.all(promiseArray);
       dispatch(addGptMovieResult(movieData));
     } catch (error) {
       console.error("Error processing the search result:", error);
+    } finally {
+      setIsLoading(false); // Set loading state to false after the operation completes
     }
   };
 
   return (
-    <div className="pt-[10%] flex justify-center  ">
+    <div className="pt-[10%] flex-col justify-center">
       <form
-        className=" w-1/2 bg-black grid grid-cols-12"
+        className="w-1/2 mx-auto bg-black grid grid-cols-12"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
@@ -74,12 +83,15 @@ const GptSearchBar = () => {
           placeholder="Search for a movie"
         />
         <button
-          className="col-span-3 py-2 px-4 m-4  bg-red-700 text-white rounded-lg "
+          className="col-span-3 py-2 px-4 m-4 bg-red-700 text-white rounded-lg"
           onClick={handleGptSearchClick}
+          disabled={isLoading} // Disable button while loading
         >
           Search
         </button>
       </form>
+      {isLoading && <Shimmer />}
+      {!isLoading && <GptMovieSuggestions />}
     </div>
   );
 };
