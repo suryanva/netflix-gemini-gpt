@@ -97,3 +97,20 @@ A movie browsing and recommendation application that integrates with TMDB and Ge
 If you would like to contribute to this project, please fork the repository and submit a pull request.
 
 Feel free to adjust any sections to better match your project's specific needs or to add any additional information as necessary.
+
+## Login Details:
+
+email : test4.test@gmail.com
+
+Password: Password1!
+
+## For Sign-Up Make Sure:
+
+This password meets the following conditions:
+
+At least one lowercase letter (a-z): a
+At least one uppercase letter (A-Z): P
+At least one digit (0-9): 1
+At least one special character (@$!%\*?&): !
+Minimum length of 8 characters: Password1! has 10 characters.
+This should pass the validation regex!
