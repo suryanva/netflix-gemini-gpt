@@ -117,3 +117,7 @@ This should pass the validation regex!
 
 ## Sample Search
 ![Image](https://github.com/user-attachments/assets/a60bc544-3c2d-42cb-ab28-148ec390914e)
+
+
+## Public URL:
+https://netflix-gpt-44aab.web.app/
