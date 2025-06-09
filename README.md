@@ -114,3 +114,6 @@ At least one digit (0-9): 1
 At least one special character (@$!%\*?&): !
 Minimum length of 8 characters: Password1! has 10 characters.
 This should pass the validation regex!
+
+## Sample Search
+![Image](https://github.com/user-attachments/assets/a60bc544-3c2d-42cb-ab28-148ec390914e)
