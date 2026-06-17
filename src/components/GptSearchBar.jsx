@@ -46,7 +46,7 @@ const GptSearchBar = () => {
           const firstKey = Object.keys(moviesArray)[0];
           moviesArray = moviesArray[firstKey];
         }
-      } catch (error) {
+      } catch {
         // If JSON parsing fails, handle as plain text
         moviesArray = responseText.split(",").map((movie) => movie.trim());
       }

@@ -1,49 +1,16 @@
-import { useNavigate } from "react-router-dom";
 import { NETFLIX_LOGO_URL } from "../utils/constants";
 import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { addUser, removeUser } from "../utils/redux/userSlice";
 import { toggleGptSearchView } from "../utils/redux/gptSlice";
 
 const Header = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {})
-      .catch(() => {
-        navigate("/error");
-      });
+    signOut(auth).catch(() => {});
   };
-  useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-        const { uid, email, displayName, photoURL } = user;
-        dispatch(
-          addUser({
-            uid: uid,
-            email: email,
-            displayName: displayName,
-            photoURL: photoURL,
-          })
-        );
-        navigate("/browse");
-      } else {
-        // User is signed out
-        dispatch(removeUser());
-        navigate("/");
-      }
-    });
-    // Unsubscribe when component unmounts
-    return () => unSubscribe();
-  }, []);
 
   const handleGptSearch = () => {
     dispatch(toggleGptSearchView());
@@ -66,7 +33,7 @@ const Header = () => {
           />
           <button
             onClick={handleSignOut}
-            className="py-2 px-4 m-2 md:m-4 text-white border border-black p-2 md:p-3 hover:bg-red-600 text-sm md:text-base"
+            className="px-4 py-2 m-2 md:m-4 text-white border border-black hover:bg-red-600 text-sm md:text-base"
           >
             Sign-Out
           </button>

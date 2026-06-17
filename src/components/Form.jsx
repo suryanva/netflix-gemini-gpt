@@ -39,24 +39,27 @@ const Form = () => {
             updateProfile(user, {
               displayName: fullNameValue,
               photoURL: USER_URL,
-            }).then(() => {
-              const { uid, email, displayName, photoURL } = auth.currentUser;
-              dispatch(
-                addUser({
-                  uid: uid,
-                  email: email,
-                  displayName: displayName,
-                  photoURL: photoURL,
-                })
-              );
-            });
+            })
+              .then(() => {
+                const { uid, email, displayName, photoURL } = auth.currentUser;
+                dispatch(
+                  addUser({
+                    uid: uid,
+                    email: email,
+                    displayName: displayName,
+                    photoURL: photoURL,
+                  })
+                );
+              })
+              .catch((error) => {
+                console.error("Failed to update profile:", error);
+              });
           })
           .catch((error) => {
             setErrorMessage(error.code + "-" + error.message);
           });
       } else {
         signInWithEmailAndPassword(auth, emailValue, passwordValue)
-          .then(() => {})
           .catch((error) => {
             setErrorMessage(error.code + "-" + error.message);
           });
@@ -90,7 +93,7 @@ const Form = () => {
           <input
             ref={email}
             className="p-4 w-full bg-gray-700 border border-gray-50 rounded-lg"
-            type="text"
+            type="email"
             placeholder="Email"
           />
           <input
@@ -109,12 +112,6 @@ const Form = () => {
           {!signUp && <h3 className="text-center">OR</h3>}
 
           {!signUp && (
-            <button className="block w-full p-2 bg-gray-600 hover:bg-opacity-60 rounded-lg">
-              Use a Sign-In Code
-            </button>
-          )}
-
-          {!signUp && (
             <p className="text-center hover:underline">
               <a href="#dummy">Forgot Password?</a>
             </p>
@@ -124,14 +121,15 @@ const Form = () => {
           <input type="checkbox" id="rememberMe" className="mr-2" />
           <label htmlFor="rememberMe">Remember Me</label>
         </div>
-        <p
-          className="cursor-pointer hover:underline text-center"
+        <button
+          type="button"
+          className="cursor-pointer hover:underline text-center bg-transparent border-none w-full"
           onClick={() => toggleSignUp()}
         >
           {signUp
             ? "Already a User? Sign In Now"
             : "New to Netflix? Sign up now."}
-        </p>
+        </button>
         <p className="text-center">
           This page is protected by Google reCAPTCHA to ensure you are not a
           bot. Learn more.
