@@ -49,7 +49,7 @@ const Header = () => {
     dispatch(toggleGptSearchView());
   };
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center bg-gradient-to-b from-black h-24 absolute z-10 w-full p-4 md:p-0">
+    <div className="flex flex-col md:flex-row justify-between items-center bg-gradient-to-b from-black absolute z-50 w-full p-4 top-0 left-0 md:p-0">
       <img className="w-36 md:w-52 h-full" src={NETFLIX_LOGO_URL} alt="logo" />
       {user ? (
         <div className="flex flex-col md:flex-row items-center">
