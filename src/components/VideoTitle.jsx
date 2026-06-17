@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 const VideoTitle = (props) => {
   const { title, overview } = props;
   return (
-    <div className="w-screen aspect-video pt-[25%] px-24 absolute text-white bg-gradient-to-r from-black">
+    <div className="w-screen aspect-video pt-[25%] px-24 absolute text-white bg-gradient-to-r from-black pointer-events-none">
       <h1 className="text-6xl font-bold">{title}</h1>
       <p className="py-6 text-lg w-1/3">{overview.slice(0, 150)}</p>
-      <div className="space-x-4">
+      <div className="space-x-4 pointer-events-auto">
         <button className="bg-white text-black px-12 text-xl  py-4  rounded-lg hover:bg-opacity-80">
           ▶️ Play
         </button>
