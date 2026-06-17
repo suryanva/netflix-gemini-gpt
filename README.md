@@ -74,17 +74,17 @@ A movie browsing and recommendation application that integrates with TMDB and Ge
    npm run dev
    ```
 
-## Deployment
+## Deployment (Render)
 
-1. **Build the project**
+1. **Push to GitHub**
 
-   ```bash
-   npm run build
-   ```
+2. **In Render Dashboard:**
+   - Click **New Static Site**
+   - Connect your GitHub repository
+   - Render will auto-detect the config from `render.yaml`
+   - Add the environment variables from your `.env` file in the Render dashboard
 
-2. **Deploy**
-
-   Follow the deployment instructions for your preferred hosting service.
+3. **That's it** — Render will build and deploy automatically on every push.
 
 ## Usage
 
@@ -119,5 +119,5 @@ This should pass the validation regex!
 ![Image](https://github.com/user-attachments/assets/a60bc544-3c2d-42cb-ab28-148ec390914e)
 
 
-## Public URL:
-https://netflix-gpt-44aab.web.app/
+## Live URL:
+Set by Render after deployment.
