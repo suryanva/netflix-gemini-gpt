@@ -2,7 +2,7 @@ export const NETFLIX_LOGO_URL =
   "https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png";
 
 export const NETFLIX_BACKGROUND_URL =
-  "https://wpassets.brainstation.io/app/uploads/2017/04/13100509/Netflix-Background.jpg";
+  "https://assets.nflxext.com/ffe/siteui/vlv3/f841d4c7-10e1-40af-bcae-07a3f8dc141a/f6d7434e-d6de-4185-a6d4-c77a2d08737b/US-en-20220502-popsignuptwoweeks-perspective_alpha_website_medium.jpg";
 
 export const USER_URL = "https://redux-toolkit.js.org/img/redux.svg";
 
